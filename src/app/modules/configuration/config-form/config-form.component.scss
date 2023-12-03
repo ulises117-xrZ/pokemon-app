@@ -1,0 +1,15 @@
+/* En tu archivo Sass o en el componente específico */
+.card-personalizada {
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: yellow; /* Fondo amarillo */
+  padding: 20px;
+  height: 100%;
+  width:70%;
+
+  &__circle{
+    width: 150px;
+    height: 150px;
+    background-color: blue;
+    border-radius: 100%;
+  }
+}
