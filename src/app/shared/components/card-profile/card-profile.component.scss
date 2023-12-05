@@ -6,6 +6,7 @@
   padding: 20px;
   height: 500px;
   width:392px;
+  text-align: center;
 
   &__circle{
     width: 269px;
@@ -16,15 +17,4 @@
     border-radius: 100%;
     border: 14px solid white;
   }
-
-  &__button{
-    height: 70px;
-    width: 330px;
-    border: 1px dashed $light-blue;
-    border-radius: 20px;
-  }
-}
-
-.form-container{
-  width: 75%;
 }

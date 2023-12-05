@@ -1,0 +1,54 @@
+/* pokemon-list.component.scss */
+
+@import "src/app/core/theming/variables.scss";
+.card{
+  position: relative;
+  background-color: $light-gray;
+  width:163px;
+  height: 106px;
+  border-radius: 20px;
+  &__active {
+    background-color: $primary-color !important;
+  }
+
+  &__img{
+    position: absolute;
+    top: -35px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+
+  &__body{
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    text-align: center;
+    p{
+      display: flex;
+      justify-content: space-evenly;
+      background-color: $primary-text;
+      border-radius: 10px;
+      font-size: 12px;
+      color: white;
+    }
+  }
+}
+
+
+.listContainer{
+  height: 400px;
+  padding-top: 20px;
+  overflow-y: scroll;
+}
+
+.hidden{
+position: absolute;
+z-index: 10;
+width: 163px;
+height: 106px;
+background-color: #d9d5d591;
+border-radius: 20px;
+}

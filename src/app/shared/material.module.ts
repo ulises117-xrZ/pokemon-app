@@ -12,12 +12,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatCardModule} from '@angular/material/card';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -34,9 +36,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSliderModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ScrollingModule,
   ],
   exports: [
+    ScrollingModule,
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
