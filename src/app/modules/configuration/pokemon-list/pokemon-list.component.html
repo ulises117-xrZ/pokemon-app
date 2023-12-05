@@ -1,1 +1,47 @@
-<p>pokemon-list works!</p>
+<div *ngIf="isLoading">
+  <app-loading direction="/profile" text="Cargando perfil..."></app-loading>
+</div>
+<div class="container" *ngIf="!isLoading">
+  <div class="row">
+    <div class="col-12 d-flex flex-column align-items-start">
+      <h1>¡Ya casi términamos!</h1>
+      <h4 class="subtitle">Revisa la información, y completa lo solicitado.</h4>
+    </div>
+    <div class="col-6">
+      <app-card-profile></app-card-profile>
+    </div>
+    <div class="col-6">
+      <div class="row">
+        <div class="col-12">
+          <h3>Pokémon</h3>
+          <h4 class="subtitle">Selecciona 3 pokemon para que sean parte de tu equipo</h4>
+        </div>
+
+        <mat-form-field appearance="outline" class="col-12">
+          <mat-label for="queryPk">busca por índice, nombre...</mat-label>
+          <input matInput type="text" id="queryPk" name="queryPk">
+        </mat-form-field>
+
+
+        <div class="row listContainer">
+          <div *ngFor="let pokemon of pokemonList.pokemon_species" class="col-md-4 mb-4">
+            <mat-card [class]="'card '+ 'card__'+pokemon.status">
+              <div class="hidden" *ngIf="shouldShowDisabled(pokemon)">
+              </div>
+              <img [src]="getImagesFromUrl(pokemon.url)" class="card__img" alt="Pokemon Image"
+                (click)="togglePokemonSelection(pokemon)">
+              <mat-card-content class="card__body">
+                <p><span>{{getNumberPokemon(pokemon.url)}}</span> <span>{{ pokemon.name }}</span></p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center col-12">
+        <app-main-button [buttonText]="'Guardar'" [status]="selectedPokemons.length >=3"
+          (buttonClick)="handleProfile()"
+          ></app-main-button>
+      </div>
+    </div>
+  </div>
+</div>

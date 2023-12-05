@@ -1,0 +1,19 @@
+@import "src/app/core/theming/variables.scss";
+
+button {
+  display: flex;
+  width: 222px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 20px;
+  background-color: $primary-text;
+  color: white;
+}
+
+.disabled {
+  background-color: $disabled;
+  color: $gray;
+}

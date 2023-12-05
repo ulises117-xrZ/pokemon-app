@@ -1,0 +1,35 @@
+<mat-card class="card-personalizada d-flex justify-content-evenly">
+  <mat-card-title>
+    <h1>{{profile.name}}</h1>
+  </mat-card-title>
+  <mat-card-content class="d-flex flex-column align-items-center">
+    <div class="card-personalizada__circle d-flex justify-content-center align-items-center"
+      [style.backgroundImage]="'url(' + profile.photo  + ')'">
+      <div *ngIf="profile.photo ===''">
+        <mat-icon>
+          person
+        </mat-icon>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="d-flex flex-column ">
+    <div class="d-flex justify-content-evenly w-100">
+      <p>Pasatiempo:</p>
+      <p>{{profile.activities.slice(0,1)}}</p>
+    </div>
+    <div class="d-flex justify-content-evenly w-100">
+      <p>
+        Edad:
+      </p>
+      <p>{{profile.age}}</p>
+    </div>
+    <div class="d-flex justify-content-evenly w-100" *ngIf="profile.age >= 18">
+      <p>DUI:</p>
+      <p>{{profile.dui}}</p>
+    </div>
+    <div class="d-flex justify-content-evenly w-100" *ngIf="profile.minorityDoc !== ''">
+      <p>Carnet de minoridad:</p>
+      <p>{{profile.minorityDoc}}</p>
+    </div>
+  </mat-card-actions>
+</mat-card>

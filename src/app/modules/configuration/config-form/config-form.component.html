@@ -1,50 +1,81 @@
-<div class="container text-center d-flex align-items-center">
-  <div class="row justify-content-center">
-    <div class="col-6">
-      <h1>Hola, configuremos tu perfil</h1>
-      <h4>Queremos conocerte mejor</h4>
-      <mat-card class="card-personalizada">
-        <mat-card-title>Hola chavalez</mat-card-title>
-        <mat-card-content>
-          <div class="card-personalizada__circle">circle</div>
-          <button mat-flat-button>Adjuntar fotografia
-            <span>icon</span>
-          </button>
-        </mat-card-content>
-      </mat-card>
+<div *ngIf="isLoading">
+  <app-loading [direction]="'/poke-list'" text="Cargando..."></app-loading>
+</div>
+<div class="container text-center d-flex align-items-center" *ngIf="!isLoading">
+  <form [formGroup]="userForm" (ngSubmit)="enviarFormulario()" class="row">
+    <div class="row">
+      <div class="col-12 d-flex flex-column align-items-start">
+        <h1>Hola, configuremos tu perfil</h1>
+        <h4 class="subtitle">Queremos conocerte mejor</h4>
+      </div>
+      <div class="col-6">
+        <mat-card class="card-personalizada d-flex justify-content-evenly">
+          <mat-card-title>Imágen perfil</mat-card-title>
+          <mat-card-content class="d-flex flex-column align-items-center">
+            <div class="card-personalizada__circle d-flex justify-content-center align-items-center"
+              [style.backgroundImage]="'url(' + imagenSeleccionada  + ')'">
+              <div *ngIf="imagenSeleccionada ===''">
+                <mat-icon>
+                  person
+                </mat-icon>
+              </div>
+            </div>
+            <input #fileInput formControlName="profilePhoto" id="profilePhoto" type="file" (change)="handleFile($event)"
+              style="display: none">
+          </mat-card-content>
+          <mat-card-actions class="d-flex justify-content-center align-items-center">
+            <button class="card-personalizada__button d-flex justify-content-center align-items-center"
+              (click)="fileInput.click()" type="button">
+              <p class="m-0 p-0">{{textoBoton}}</p>
+              <mat-icon>
+                {{iconBoton}}
+              </mat-icon>
+            </button>
+
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+        <div class="row form-container">
+          <h3>Tu información</h3>
+          <h4 class="subtitle">Completa la siguiente información para completar tu perfil</h4>
+
+          <mat-form-field appearance="outline">
+            <mat-label for="nombre">Nombre</mat-label>
+            <input matInput formControlName="nombre" id="nombre" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Pasatiempos</mat-label>
+            <mat-select formControlName="pasatiempos" multiple>
+              <mat-option *ngFor="let pasatiempo of pasatiempos" [value]="pasatiempo">
+                {{ pasatiempo }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label for="fechaNacimiento">Fecha de Nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" *ngIf="esMayor">
+            <mat-label for="dui">DUI</mat-label>
+            <input matInput formControlName="dui" id="dui" appDuiMask  required maxlength="9">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" *ngIf="!esMayor">
+            <mat-label for="carnetMinoridad">Carnet de minoridad</mat-label>
+            <input matInput formControlName="carnetMinoridad" id="carnetMinoridad" maxlength="9">
+          </mat-form-field>
+          <div *ngIf="userForm.get('dui')?.hasError('invalidDuiFormat')">Formato de DUI inválido</div>
+          <div *ngIf="userForm.get('dui')?.hasError('invalidDuiLength')">Longitud de DUI invalido</div>
+
+          <button mat-raised-button color="primary" type="submit">Enviar</button>
+        </div>
+      </div>
     </div>
-    <div class="col-6">
-      <h3>Tu información</h3>
-      <h4>Completa la siguiente información para completar tu perfil</h4>
-      <form [formGroup]="userForm" (ngSubmit)="enviarFormulario()" class="row">
-        <mat-form-field appearance="outline">
-          <mat-label for="nombre">Nombre</mat-label>
-          <input matInput formControlName="nombre" id="nombre" required>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Pasatiempos</mat-label>
-          <mat-select formControlName="pasatiempos" multiple>
-            <mat-option *ngFor="let pasatiempo of pasatiempos" [value]="pasatiempo">
-              {{ pasatiempo }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label for="fechaNacimiento">Fecha de Nacimiento</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label for="dui">DUI</mat-label>
-          <input matInput formControlName="dui" id="dui" required>
-        </mat-form-field>
-
-        <button mat-raised-button color="primary" type="submit">Enviar</button>
-      </form>
-    </div>
-  </div>
+  </form>
 </div>
