@@ -1,12 +1,17 @@
 @import 'src/app/core/theming/variables.scss';
 
 .card-personalizada {
-  border-radius: 10px;
+  border-radius: 50px;
   background-color: $primary-color;
   padding: 20px;
   height: 500px;
-  width:392px;
+  width:350px;
   text-align: center;
+
+  &__title{
+    font-size: 1.5em;
+    margin-left: 5px;
+  }
 
   &__circle{
     width: 269px;

@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatDatepickerModule,
     MatNativeDateModule,
     ScrollingModule,
+    MatProgressBarModule,
   ],
   exports: [
     ScrollingModule,
@@ -55,7 +57,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatProgressSpinnerModule,
     MatSliderModule,
     MatCardModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatProgressBarModule,
   ]
 })
 export class MaterialModule { }

@@ -16,5 +16,6 @@ export interface IProfile {
 
 export interface IStoreInitial {
   profile: IProfile
-  pokemonList: IPokemonSpecy[]
+  pokemonList: IPokemonSpecy[],
+  edition: boolean
 }

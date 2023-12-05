@@ -1,0 +1,34 @@
+/* pokemon-details.component.scss */
+
+.pokemon-card {
+  width: 400px;
+  margin: 20px;
+
+.pokemon-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.stat-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stat-name {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.stat-progress {
+  flex-grow: 1;
+}
+}
+

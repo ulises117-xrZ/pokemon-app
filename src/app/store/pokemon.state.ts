@@ -11,5 +11,6 @@ export const initialState: IStoreInitial ={
     age: 0
   },
 
-  pokemonList: []
+  pokemonList: [],
+  edition: false
 }

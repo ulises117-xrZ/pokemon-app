@@ -19,12 +19,19 @@ export class PokemonListComponent implements OnInit {
   };
 
   selectedPokemons: IPokemonSpecy[] = [];
-  isLoading: boolean =false;
+  isLoading: boolean = false;
+  fromEdit: boolean = false;
 
   constructor(private pokeGeneration: PokeGenerationService,
     private store: Store<{ pokemonState: IStoreInitial }>,
     private route: Router
-  ) { }
+  ) {
+    this.store.select('pokemonState').subscribe((state) => {
+      this.fromEdit = state.edition;
+      if (!state.edition) return;
+      this.selectedPokemons = state.pokemonList;
+    })
+  }
 
   ngOnInit() {
     this.getPokemonList();
@@ -36,6 +43,18 @@ export class PokemonListComponent implements OnInit {
         this.pokemonList.pokemon_species = data.pokemon_species?.map((pokemon: IPokemonSpecy) => ({
           ...pokemon, status: "inactivo"
         }));
+        if (this.fromEdit) {
+          this.selectedPokemons.forEach((pokemon) => {
+            let ix = 0;
+            let found = this.pokemonList.pokemon_species.find((pk, index) => {
+              ix = index;
+              return pk.name === pokemon.name;
+            });
+            if (found) {
+              this.pokemonList.pokemon_species[ix] = { ...found, status: 'active' };
+            }
+          })
+        }
         console.log('pokemonList', this.pokemonList)
       },
       error: (error) => {

@@ -4,8 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { DialogComponent } from 'src/app/core/components/dialog/dialog/dialog.component';
 import { IProfile, IStoreInitial } from 'src/app/data/interfaces/IStore';
-import { saveConfigInfo } from 'src/app/store/actions/pokemon.action';
-import {Router} from '@angular/router';
+import { edit, saveConfigInfo } from 'src/app/store/actions/pokemon.action';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-config-form',
@@ -13,7 +13,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./config-form.component.scss'],
 })
 export class ConfigFormComponent {
-
   userForm!: FormGroup;
   pasatiempos: string[] = ['Leer', 'Deportes', 'Viajar', 'Música'];
   imagenSeleccionada: string | ArrayBuffer;
@@ -21,14 +20,14 @@ export class ConfigFormComponent {
   iconBoton: string = "cloud_upload";
   esMayor: boolean = true;
   edad: number = 0;
-  isLoading: boolean =false;
+  isLoading: boolean = false;
+  fromEdit: boolean = false;
 
 
   constructor(
     private store: Store<{ pokemonState: IStoreInitial }>,
     private router: Router,
     private formBuilder: FormBuilder, public dialog: MatDialog) {
-
     this.imagenSeleccionada = "";
     this.userForm = this.formBuilder.group({
       profilePhoto: [null, Validators.required],
@@ -42,6 +41,23 @@ export class ConfigFormComponent {
     this.userForm.get('fechaNacimiento')?.valueChanges.subscribe(() => {
       this.calculateAge();
     });
+
+    this.store.select('pokemonState').subscribe((state) => {
+      const { profile } = state;
+      this.fromEdit = state.edition;
+      if (!state.edition) return;
+      this.userForm.patchValue({
+        profilePhoto: profile.photo,
+        nombre: profile.name,
+        carnetMinoridad: profile.minorityDoc,
+        pasatiempos: profile.activities,
+        fechaNacimiento: profile.birthDate,
+        dui: profile.dui,
+      })
+      this.imagenSeleccionada = profile.photo
+      this.esMayor = profile.age > 18
+    })
+
   }
 
   openDialog(title: string, text: string): void {
