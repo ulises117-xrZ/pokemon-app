@@ -18,6 +18,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from './shared/shared.module';
+import { HomeProfileComponent } from './modules/home/home-profile/home-profile.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     ConfigFormComponent,
     PokemonListComponent,
+    HomeProfileComponent,
     HeaderComponent,
     BodyComponent,
     DialogComponent,

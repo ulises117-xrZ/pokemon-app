@@ -13,3 +13,8 @@ export const savePokemonList = createAction(
   '[Save pokemon list] Configuration',
   props<{ data: IPokemonSpecy[] }>()
 )
+
+export const edit = createAction(
+  '[Profile] Edit profile',
+  props<{data: boolean}>()
+)

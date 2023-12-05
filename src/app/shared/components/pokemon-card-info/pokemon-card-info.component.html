@@ -1,0 +1,20 @@
+<!-- pokemon-details.component.html -->
+
+<mat-card class="pokemon-card">
+
+  <mat-card-content>
+    <div mat-card-avatar class="pokemon-image">
+      <img [src]="pokemonDetails.sprites.front_default" alt="Pokemon Image">
+    </div>
+    <div class="stat-container">
+      <div *ngFor="let stat of statNames" class="stat-item">
+        <div class="stat-name">{{ stat }}</div>
+        <mat-progress-bar
+          [value]="getStatPercentage(stat)"
+          mode="determinate"
+          class="stat-progress"
+        ></mat-progress-bar>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

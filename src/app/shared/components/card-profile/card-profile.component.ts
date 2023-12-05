@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IProfile, IStoreInitial } from 'src/app/data/interfaces/IStore';
 
@@ -8,6 +8,7 @@ import { IProfile, IStoreInitial } from 'src/app/data/interfaces/IStore';
   styleUrls: ['./card-profile.component.scss']
 })
 export class CardProfileComponent {
+@Input() isProf:boolean = false;
 imagenSeleccionada: string | ArrayBuffer = "";
 profile: IProfile = {
   photo: '',

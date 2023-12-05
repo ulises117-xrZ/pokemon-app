@@ -1,5 +1,5 @@
 <div *ngIf="isLoading">
-  <app-loading [direction]="'/poke-list'" text="Cargando..."></app-loading>
+  <app-loading [direction]="fromEdit ? '/profile' : '/poke-list'" text="Cargando..."></app-loading>
 </div>
 <div class="container text-center d-flex align-items-center" *ngIf="!isLoading">
   <form [formGroup]="userForm" (ngSubmit)="enviarFormulario()" class="row">
@@ -63,7 +63,7 @@
 
           <mat-form-field appearance="outline" *ngIf="esMayor">
             <mat-label for="dui">DUI</mat-label>
-            <input matInput formControlName="dui" id="dui" appDuiMask  required maxlength="9">
+            <input matInput formControlName="dui" id="dui" appDuiMask required maxlength="9">
           </mat-form-field>
 
           <mat-form-field appearance="outline" *ngIf="!esMayor">

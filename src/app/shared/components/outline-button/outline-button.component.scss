@@ -1,0 +1,19 @@
+@import "src/app/core/theming/variables.scss";
+
+.outline-btn {
+  width: 134px;
+  height: 35px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1.5px solid $primary-text;
+  background-color: white;
+  border-radius: 10px;
+
+  &__icon {
+    margin-top: 8px;
+    margin-right: 20px;
+    font-size: 1em;
+    color: $primary-text;
+  }
+}

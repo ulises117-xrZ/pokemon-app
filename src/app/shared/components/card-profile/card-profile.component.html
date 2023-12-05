@@ -1,6 +1,10 @@
 <mat-card class="card-personalizada d-flex justify-content-evenly">
   <mat-card-title>
-    <h1>{{profile.name}}</h1>
+    <h1 *ngIf="!isProf">{{profile.name}}</h1>
+    <div class="d-flex justify-content-between align-items-center">
+      <p *ngIf="isProf" class="text-start mx-1 card-personalizada__title">Entrenador</p>
+      <img *ngIf="isProf" src=".././../../../assets/images/badge.png">
+    </div>
   </mat-card-title>
   <mat-card-content class="d-flex flex-column align-items-center">
     <div class="card-personalizada__circle d-flex justify-content-center align-items-center"
