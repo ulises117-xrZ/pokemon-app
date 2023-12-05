@@ -9,7 +9,8 @@ import { HomeProfileComponent } from './modules/home/home-profile/home-profile.c
 const routes: Routes = [
   {path: "", component: BodyComponent},
   {path: "poke-list", component: PokemonListComponent},
-  {path: "profile", component: HomeProfileComponent}
+  {path: "profile", component: HomeProfileComponent},
+  {path: "**", component: BodyComponent}
 ];
 
 @NgModule({

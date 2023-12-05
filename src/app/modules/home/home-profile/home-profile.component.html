@@ -13,7 +13,7 @@
         <h3>Mis Pokemons</h3>
         <app-outline-button buttonText="Editar" (buttonClick)="editPokemonList()"></app-outline-button>
       </div>
-      <div *ngFor="let pokemon of pokemonDetail">
+      <div *ngFor="let pokemon of pokemonDetail" style="margin-bottom: 30px;">
         <app-pokemon-card-info
           [pokemonDetails]="pokemon"
         ></app-pokemon-card-info>
