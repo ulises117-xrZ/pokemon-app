@@ -47,10 +47,6 @@ export class PokemonCardInfoComponent {
 
   }
 
-
-
-
-
   getStatPercentage(statName: string): number {
     const statValue = this.pokemonDetails.stats.find((stat: any) => stat.stat.name === statName)?.base_stat ?? 0;
 
@@ -61,12 +57,12 @@ export class PokemonCardInfoComponent {
   getMaxStatValue(statName: string): number {
     // Define el valor máximo para cada estadística
     const maxStatValues: { [key: string]: number } = {
-      'Salud': 255,
-      'Ataque': 190,
-      'Defensa': 230,
-      'Ataque Especial': 194,
-      'Defensa Especial': 230,
-      'Velocidad': 180,
+      'hp': 255,
+      'attack': 190,
+      'defense': 230,
+      'special-attack': 194,
+      'special-defense': 230,
+      'speed': 180,
     };
     return maxStatValues[statName] || 100; // Valor predeterminado de 100 si no se encuentra la estadística
   }

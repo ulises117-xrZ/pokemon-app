@@ -2,19 +2,20 @@
 
 <mat-card class="pokemon-card">
 
-  <mat-card-content>
-    <div mat-card-avatar class="pokemon-image">
-      <img [src]="pokemonDetails.sprites.front_default" alt="Pokemon Image">
+  <mat-card-content class="pokemon-card__content">
+    <div class="d-flex flex-column align-items-center justify-content-center">
+      <div mat-card-avatar class="pokemon-image">
+        <img [src]="pokemonDetails.sprites.front_default" alt="Pokemon Image">
+      </div>
+      <h2>{{pokemonDetails.name}}</h2>
+      <p>{{pokemonDetails.types[0].type.name}}</p>
     </div>
     <div class="stat-container">
       <div *ngFor="let stat of statNames" class="stat-item">
         <div class="stat-name">{{ stat }}</div>
-        <mat-progress-bar
-          [value]="getStatPercentage(stat)"
-          mode="determinate"
-          class="stat-progress"
-        ></mat-progress-bar>
+        <mat-progress-bar  [value]="getStatPercentage(stat)" mode="determinate" class="stat-progress"></mat-progress-bar>
       </div>
     </div>
   </mat-card-content>
+
 </mat-card>

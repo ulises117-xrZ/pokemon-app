@@ -1,18 +1,28 @@
 /* pokemon-details.component.scss */
-
+@import 'src/app/core/theming/variables.scss';
 .pokemon-card {
-  width: 400px;
-  margin: 20px;
+  width: 500px;
+  background-color: $light-gray;
+  border-radius: 20px;
+  // margin: 20px;
 
-.pokemon-image img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  &__content{
+    display: flex;
+    justify-content: space-evenly;
+  }
+.pokemon-image {
+  width: 200px;
+  height: 150px;
+  img{
+    width: 200px;
+    height: 200px;
+  }
 }
 
 .stat-container {
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 
 .stat-item {
@@ -29,6 +39,16 @@
 
 .stat-progress {
   flex-grow: 1;
+  border-radius: 20px;
 }
 }
 
+
+.mat-mdc-progress-bar {
+  --mdc-linear-progress-active-indicator-color: #185A7D ;
+  --mdc-linear-progress-track-color: rgba(63, 81, 181, 0);
+  --mdc-linear-progress-active-indicator-height: 15px;
+  --mdc-linear-progress-track-height: 15px;
+  --mdc-linear-progress-track-shape: 0;
+  border: 3px solid white;
+}
